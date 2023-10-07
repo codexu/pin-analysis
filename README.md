@@ -72,6 +72,8 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 Nest is [MIT licensed](LICENSE).
 
+---
+
 ## 初始化项目
 
 使用 nest 创建一个项目，首先先安装 Nest Cli：
@@ -83,5 +85,16 @@ $ npm i -g @nestjs/cli
 然后通过 new 命令初始化项目目录：
 
 ```
-$ nest new project-name
+$ nest new pin-anailysis
 ```
+
+随后选择你喜欢的包管理器进行安装依赖，然后手动再安装几个后续需要使用到的依赖：
+
+- @nestjs/schedule 定时任务
+- puppeteer 爬虫
+- @node-rs/jieba 关键词分析
+- @nestjs/typeorm、typeorm、mysql2 数据库
+
+import { load, extract } from '@node-rs/jieba';
+
+分析沸点关键词和权重
