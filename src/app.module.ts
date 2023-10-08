@@ -6,6 +6,7 @@ import { PinService } from './pin/pin.service';
 import { PinController } from './pin/pin.controller';
 import { KeywordService } from './keyword/keyword.service';
 import { KeywordController } from './keyword/keyword.controller';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -21,7 +22,7 @@ import { KeywordController } from './keyword/keyword.controller';
     }),
     TypeOrmModule.forFeature([Pin, Keyword]),
   ],
-  controllers: [PinController, KeywordController],
+  controllers: [AppController, PinController, KeywordController],
   providers: [PinService, KeywordService],
 })
 export class AppModule {}

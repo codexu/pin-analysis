@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>App</title>
+    <style>
+      #bar{
+        width: 100%;
+        height:400px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="bar"></div>
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    async function getKeywordsList() {
+      return await axios.get('/keyword/list');
+    }
+
+    async function init () {
+      const { data } = await getKeywordsList();
+      const chartData = data.slice(0, 20);
+      const barChart = echarts.init(document.getElementById('bar'));
+      barChart.setOption({
+        xAxis: {
+          data: chartData.map(item => item.word)
+        },
+        yAxis: {},
+        series: [
+          {
+            name: '热度',
+            type: 'bar',
+            data: chartData.map(item => item.hot)
+          }
+        ]
+      });
+    }
+
+    init()
+  </script>
+</html>
